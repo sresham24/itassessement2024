@@ -1,0 +1,337 @@
+@import "./base.css";
+
+/* site header css */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0px;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--white);
+}
+
+.site-header.sticky {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-header__nav .navbar-nav a {
+    padding: 0 10px;
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.site-header__nav .navbar-brand img {
+    max-width: 165px;
+}
+
+.site-header .navbar-toggler {
+    transition: all .3s ease-in-out;
+}
+
+.site-header .navbar-toggler .navbar-toggler-icon {
+    padding: 0.25rem;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid var(--lime-green);
+    transition: all .3s;
+}
+
+.site-header .navbar-toggler .navbar-toggler-icon i {
+    font-size: 22px;
+    transition: all .3s;
+    color: var(--lime-green);
+}
+
+.site-header .navbar-toggler i.fa-bars {
+    display: none;
+}
+
+.site-header .navbar-toggler[aria-expanded="false"] i.fa-bars {
+    display: block;
+}
+
+.site-header .navbar-toggler[aria-expanded="false"] i.fa-xmark {
+    display: none;
+}
+
+.site-header .navbar-toggler.collapsed i.fa-xmark {
+    display: none;
+}
+
+.site-header .navbar-toggler.collapsed i.fa-bars {
+    display: block;
+}
+
+.site-header .navbar-nav .nav-link:hover,
+.site-header .navbar-nav .nav-link:focus {
+    color: var(--lime-green);
+}
+
+@media (max-width: 991.98px) {
+
+    .site-header .navbar-collapse {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        width: 100%;
+        overflow-y: auto;
+        max-width: 17.5rem;
+        transition: all 0.3s;
+        background-color: rgba(255, 255, 255, 0.75);
+        box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.3);
+        height: auto !important;
+        z-index: 10000;
+        display: block !important;
+        padding: 3rem 0;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .site-header .navbar-collapse.show {
+        transform: translateX(0);
+    }
+
+    .site-header .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .site-header .navbar-nav .nav-item {
+        line-height: 1;
+    }
+
+    .site-header .navbar-nav .nav-item.active .nav-link {
+        color: var(--lime-green);
+    }
+
+    .site-header .navbar-nav .nav-link {
+        border-bottom: 1px solid var(--lime-green);
+    }
+
+    .site-header .navbar-nav .nav-link {
+        position: relative;
+        padding: 0.875rem;
+        font-size: 1rem;
+        transition: all 0.3s;
+        padding-left: 24px;
+        text-transform: capitalize;
+    }
+
+    .site-header .navbar-nav .nav-link:hover,
+    .site-header .navbar-nav .nav-link:focus {
+        color: var(--lime-green);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .site-header .navbar-collapse {
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 992px) {
+    .site-header .navbar-nav .nav-item .nav-link {
+        padding: 0;
+    }
+
+    .site-header .navbar-nav .nav-item:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+
+/*tile-icon css*/
+
+.tile-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tile-icon i {
+    font-size: 24px;
+    line-height: 1;
+    color: var(--white);
+}
+
+.tile-icon span {
+    font-size: 16px;
+    color: var(--white);
+    line-height: 20px;
+    margin-left: 8px;
+}
+
+.tile-icon span a {
+    color: var(--white);
+    font-size: 16px;
+    display: block;
+}
+
+/* Site Footer */
+
+.site-footer {
+    background-color: var(--lime-green);
+}
+
+.site-footer__wrap {
+    padding: 32px 0;
+}
+
+.site-footer h4 {
+    margin-bottom: 18px;
+    color: var(--white);
+}
+
+.site-footer .site-footer__logo {
+    margin-bottom: 35px;
+}
+
+.site-footer .site-footer__info {
+    text-align: left;
+}
+
+.site-footer .site-footer__info h6 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+}
+
+.site-footer .site-footer__nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer .site-footer__nav ul li a {
+    font-size: 16px;
+    color: var(--white);
+}
+
+.site-footer .site-footer__nav ul li:not(:last-child) {
+    margin-bottom: 18px;
+}
+
+.site-footer .site-footer__copyright {
+    padding: 16px 0;
+    border-top: 1px solid var(--white);
+}
+
+.site-footer .site-footer__copyright p {
+    margin-bottom: 0;
+}
+
+.site-footer .site-footer__copyright .description {
+    font-size: 14px;
+    color: var(--white);
+}
+
+.site-footer__socials ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer__socials ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.site-footer__socials ul li:not(:last-child) {
+    margin-right: 24px;
+}
+
+.site-footer__socials ul li a {
+    display: inline-block;
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.site-footer__socials ul li a:hover {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.site-footer__socials ul li a i {
+    font-size: 18px;
+}
+
+/*media queries css*/
+
+@media only screen and (min-width: 768px) {
+
+    .site-footer h4 {
+        margin-bottom: 24px;
+    }
+
+    .site-footer .site-footer__copyright {
+        padding: 20px 0;
+    }
+
+    .site-footer .site-footer__nav ul li:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    .site-footer .site-footer__socials {
+        display: flex;
+        align-items: center;
+    }
+
+    .site-footer__wrap {
+        padding: 36px 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+    .site-header {
+        background-color: var(--white);
+    }
+
+    .site-header__nav .navbar-brand img {
+        max-width: 312px;
+    }
+
+    .site-header .site-header__nav {
+        background-color: var(--white);
+    }
+
+    .site-footer h4 {
+        margin-bottom: 30px;
+    }
+
+    .site-footer .site-footer__nav ul li:not(:last-child) {
+        margin-bottom: 24px;
+    }
+
+    .site-footer__wrap {
+        padding: 40px 0;
+    }
+
+    .site-footer .site-footer__copyright {
+        padding: 24px 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .site-footer .site-footer__nav ul li:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+/* Homepage hero banner */
+
