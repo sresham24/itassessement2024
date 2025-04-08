@@ -506,6 +506,10 @@
     padding: 32px 0;
 }
 
+/* .block-gallery .block-gallery__media a {
+    display: inline-block;
+} */
+
 .block-gallery .block-gallery__media {
     width: 100%;
     height: 100%;
