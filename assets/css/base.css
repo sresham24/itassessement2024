@@ -134,6 +134,28 @@ h5 {
     }
 }
 
+img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+.btn {
+    padding: 7px 18px;
+}
+
+.btn-primary {
+    background-color: var(--lime-green);
+    border-color: transparent;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #ffffff;
+    border-color: var(--lime-green);
+    color: var(--lime-green);
+}
+
 .site-wrapper {
     display: flex;
     align-items: stretch;
