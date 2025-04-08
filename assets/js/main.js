@@ -9,15 +9,16 @@ $(document).ready(function () {
             $(".site-header").removeClass("sticky");
         }
     });
-    
+
     //banner slider
-    $(".bannerSlider").slick({
-        dots: false
-        , autoplay: true
-        , infinite: true
-        , dots: false
-        , slidesToShow: 1
-        , slideswToScroll: 1
-        , arrows: false
+    $(".banner-slider").slick({
+        dots: false,
+        autoplay: true,
+        speed: 2500,
+        infinite: true,
+        dots: false,
+        slidesToShow: 1,
+        slideswToScroll: 1,
+        arrows: false
     });
 });
