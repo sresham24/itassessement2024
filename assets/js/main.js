@@ -22,39 +22,33 @@ $(document).ready(function () {
         arrows: false
     });
 
+    // Add real-time validation on focusout
+    $('input, textarea, select').on('focusout', function () {
+        validateField($(this));
+    });
+
     $('#contactForm').on('submit', function (e) {
         e.preventDefault();
         let isValid = true;
 
-        // Reset error messages
-        $('.error-msg').hide();
+        // Reset all errors
+        $('.form-group').removeClass('has-error');
+        $('.error').hide();
 
-        // Validate Name
-        if ($('#name').val().trim() === '') {
-            $('#nameError').show();
-            isValid = false;
-        }
+        // Validate all required fields
+        $(this).find('[required]').each(function () {
+            if (!validateField($(this))) {
+                isValid = false;
+            }
+        });
 
-        // Validate Email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test($('#email').val())) {
+        // Special email validation
+        if (!isValidEmail($('#email').val())) {
             $('#emailError').show();
+            $('#email').closest('.form-group').addClass('has-error');
             isValid = false;
         }
 
-        // Validate Subject
-        if ($('#subject').val() === '') {
-            $('#subjectError').show();
-            isValid = false;
-        }
-
-        // Validate Message
-        if ($('#message').val().trim() === '') {
-            $('#messageError').show();
-            isValid = false;
-        }
-
-        // If valid, submit form
         if (isValid) {
             alert('Thank you for your message! We will respond soon.');
             this.reset();
@@ -65,42 +59,53 @@ $(document).ready(function () {
                 method: 'POST',
                 data: $(this).serialize(),
                 dataType: 'json',
+                beforeSend: function() {
+                    $('#submitBtn').prop('disabled', true).text('Sending...');
+                },
                 success: function() {
-                    alert('Thank you!');
+                    alert('Message sent!');
                     $('#contactForm').trigger('reset');
                 },
                 error: function() {
-                    alert('There was a problem with your submission.');
+                    alert('Error sending message.');
+                },
+                complete: function() {
+                    $('#submitBtn').prop('disabled', false).text('Send Message');
                 }
             });
             */
         }
     });
 
-    // Optional: Add focusout validation for better UX
-    $('input, textarea, select').on('focusout', function () {
-        const $input = $(this);
-        const $error = $('#' + $input.attr('id') + 'Error');
+    function validateField($field) {
+        const $formGroup = $field.closest('.form-group');
+        const $error = $('#' + $field.attr('id') + 'Error');
+        let isValid = true;
 
-        if ($input.attr('type') === 'email') {
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test($input.val())) {
-                $error.show();
-            } else {
-                $error.hide();
-            }
-        } else if ($input.is('select')) {
-            if ($input.val() === '') {
-                $error.show();
-            } else {
-                $error.hide();
-            }
-        } else if ($input.is('[required]')) {
-            if ($input.val().trim() === '') {
-                $error.show();
-            } else {
-                $error.hide();
-            }
+        $formGroup.removeClass('has-error');
+        $error.hide();
+
+        if ($field.attr('type') === 'email' && !isValidEmail($field.val())) {
+            $error.show();
+            $formGroup.addClass('has-error');
+            isValid = false;
         }
-    });
+        else if ($field.is('select') && $field.val() === '') {
+            $error.show();
+            $formGroup.addClass('has-error');
+            isValid = false;
+        }
+        else if ($field.is('[required]') && $field.val().trim() === '') {
+            $error.show();
+            $formGroup.addClass('has-error');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
 });

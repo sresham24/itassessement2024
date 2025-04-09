@@ -833,6 +833,10 @@ button.submitButton {
     color: var(--danger-red);
 }
 
+.form-group.has-error .form-control {
+    border-color: var(--danger-red);
+}
+
 @media (min-width:992px) {
     .form-control {
         height: 52px;
